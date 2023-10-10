@@ -39,6 +39,7 @@ function App() {
     <>
     <header className='header'>
       <img src="./pokemonlogo.png" alt="" />
+      
     </header>
     <div className="pokedex">
       <div className='pokemon-grid'>
