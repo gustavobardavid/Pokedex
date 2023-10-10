@@ -32,14 +32,26 @@ function App() {
     }, []);
   
     if (isLoading) {
-      return <div>Carregando...</div>;
+      return (
+        // <div className="loading">
+        //   <div className="loading-spinner"></div>
+        //   Carregando...
+        // </div>
+         <div className="loading">
+        <img
+          src="./pokebola.png" 
+          alt="Pokémon Girando"
+          className="loading-spinner" 
+        />
+      </div>
+      );
     }
   
   return (
     <>
     <header className='header'>
       <img src="./pokemonlogo.png" alt="" />
-      
+
     </header>
     <div className="pokedex">
       <div className='pokemon-grid'>

@@ -5,11 +5,20 @@ import '/src/styles/Cartao.css';
 const PokemonCard = ({ pokemon }) => {
   return (
     <div className="cartao">
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-      <h2 className='cartaoNome'>{pokemon.name}</h2>
+    <div className="pokemon-image">
+      <img
+        src={pokemon.sprites.front_default}
+        alt={pokemon.name} 
+      />
+    </div>
+    <div className="pokemon-info">
+      <h2>{pokemon.name}</h2>
       <p>Height: {pokemon.height / 10} m</p>
       <p>Weight: {pokemon.weight / 10} kg</p>
+      <p>Type(s): {pokemon.types.map((type) => type.type.name).join(', ')}</p>
+      {/* Aqui você pode adicionar mais informações sobre o Pokémon, se desejar */}
     </div>
+  </div>
   );
 };
 

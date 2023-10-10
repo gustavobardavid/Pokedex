@@ -15,30 +15,13 @@
 
 .cartao img {
     border-radius: 4px;
-    height: 200px;
-    width: 300px;
     object-fit: contain;
 }
 
-.cartaoNome {
-    font-size: 1.5rem;
-    margin-top: 9px;
-    margin-bottom: 25px;
-    color: black;
-}
-
-.cartao .cartaoFuncao {
-    font-size: 1.2rem;
-    color: #7c7c7c;
-    margin: 0;
-    max-width: 220px;
-    text-align: center;
-}
-
-
 .cartao:hover {
-    filter: drop-shadow(0 0 2em #ff0000aa);
+    filter: drop-shadow(0 0 2em #000000aa);
 }
 .cartao.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
