@@ -1,10 +1,12 @@
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
+
+import '/src/styles/Cartao.css';
 
 const PokemonCard = ({ pokemon }) => {
   return (
-    <div className="pokemon-card">
+    <div className="cartao">
       <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-      <h2>{pokemon.name}</h2>
+      <h2 className='cartaoNome'>{pokemon.name}</h2>
       <p>Height: {pokemon.height / 10} m</p>
       <p>Weight: {pokemon.weight / 10} kg</p>
     </div>

@@ -1,10 +1,10 @@
 import './App.css'
+import './styles/header.css'
 import  { useState, useEffect } from 'react';
 import PokemonCard from './components/PokemonCard';
 import axios from 'axios';
-
 function App() {
-  // const Pokedex = () => {
+  
     const [pokemonList, setPokemonList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
   
@@ -37,11 +37,15 @@ function App() {
   
   return (
     <>
-    
+    <header className='header'>
+      <img src="./pokemonlogo.png" alt="" />
+    </header>
     <div className="pokedex">
+      <div className='pokemon-grid'>
       {pokemonList.map((pokemon, index) => (
         <PokemonCard key={index} pokemon={pokemon} />
-      ))}
+        ))}
+        </div>
     </div>
     </>
   )
