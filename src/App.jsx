@@ -1,33 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import  { useState, useEffect } from 'react';
+import PokemonCard from './components/PokemonCard';
+import axios from 'axios';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // const Pokedex = () => {
+    const [pokemonList, setPokemonList] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151'); // Limitando a lista a 151 Pokémon
+          const { results } = response.data;
+          const pokemonData = await Promise.all(
+            results.map(async (result) => {
+              const pokemonResponse = await axios.get(result.url);
+              return pokemonResponse.data;
+            })
+          );
+  
+          setPokemonList(pokemonData);
+          setIsLoading(false);
+        } catch (error) {
+          console.error(`Erro ao obter a lista de Pokémon: ${error}`);
+          setIsLoading(false);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
+    if (isLoading) {
+      return <div>Carregando...</div>;
+    }
+  
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    
+    <div className="pokedex">
+      {pokemonList.map((pokemon, index) => (
+        <PokemonCard key={index} pokemon={pokemon} />
+      ))}
+    </div>
     </>
   )
 }
